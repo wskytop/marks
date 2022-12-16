@@ -4,12 +4,46 @@
     <meta charset="UTF-8" />
     <title>Merry Christmas</title>
     <style>
-      .text {
+      .top-msg {
+        position: absolute;
+        top: 20vh;
+        width: 100%;
+      }
+      .big-text {
+        margin-top: 10px;
         color: whitesmoke;
-        font-size: 45px;
+        font-size: 75px;
         text-align: center;
         font-family: 'Fantasy';
         text-shadow: 5px 5px 5px purple;
+        letter-spacing: 8px;
+        opacity: 0.8;
+      }
+      .head-msg {
+        position: absolute;
+        top: 73vh;
+        width: 100%;
+      }
+      .author {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        color: whitesmoke;
+        font-size: 40px;
+        font-family: 'Fantasy';
+        text-shadow: 5px 5px 5px purple;
+        /* letter-spacing: 4px; */
+        opacity: 0.8;
+      }
+      .text {
+        margin-top: 18px;
+        color: whitesmoke;
+        font-size: 50px;
+        text-align: center;
+        font-family: 'Fantasy';
+        text-shadow: 5px 5px 5px purple;
+        letter-spacing: 8px;
+        opacity: 0.8;
       }
 
       * {
@@ -1360,9 +1394,6 @@
       #snow {
         width: 100%;
         height: 100vh;
-        /* background: rgba(0, 0, 0, 1); */
-        /*background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607430084485&di=f65b2a32979936da744874e318c37d1e&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fbackgd%2Fcover%2F00%2F25%2F46%2F5bac096e294e6.jpg%2521%2Ffw%2F780%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue") no-repeat center / 100% 100%;*/
-        /* position: fixed; */
         display: block;
         pointer-events: none;
         left: 0;
@@ -1385,8 +1416,18 @@
   <body>
     <ul class="ones">
       <li class="sphere"></li>
-      <p class="text">Merry Christmas!</p>
     </ul>
+    <div class="top-msg">
+      <p class="big-text" style="margin-bottom: 20px">Dear Key</p>
+      <p class="big-text">Merry Christmas!</p>
+    </div>
+    <div class="head-msg">
+      <p class="text" style="margin-top: 25px">初雪和热咖啡，麋鹿和圣诞树</p>
+      <p class="text">新年的钟声和倒数计时</p>
+      <p class="text">所有糟糕的都是经历</p>
+      <p class="text">所有的美好都会在最后相遇</p>
+    </div>
+    <div class="author">Your little cutie,Aurora</div>
     <ul class="twos">
       <li class="top-star"></li>
       <li class="top">
