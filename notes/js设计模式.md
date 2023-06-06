@@ -27,4 +27,48 @@ console.log(Singleton.instance, instance1 === instance2); // { name: 'example' }
 
 ##### 工厂模式
 
-> 根据参数的不同创建不同的对象，用于批量创建对象
+> 工厂模式是一种根据参数的不同创建不同对象的模式，在前端开发中，常用于创建不同类型的组件、插件等。工厂模式可以将对象的创建和使用分离，提高代码的灵活性和可维护性
+
+```javascript
+
+// 模拟抽象类
+class Animals {
+  speak() {
+    throw new Error('请重写speak方法');
+  }
+}
+
+class Cat extends Animals {
+  speak() {
+    return '喵喵喵~';
+  }
+}
+
+class Dog extends Animals {
+  speak() {
+    return '汪汪汪~';
+  }
+}
+
+// 工厂类
+class Productor {
+  createAnimal(name) {
+    switch (name) {
+      case 'dog':
+        return new Dog();
+      case 'cat':
+        return new Cat();
+      default:
+        break;
+    }
+  }
+}
+
+const animal = new Productor();
+// 使用工厂创建对应对象
+const dog = animal.createAnimal('dog');
+const cat = animal.createAnimal('cat');
+console.log(dog.speak(), cat.speak()); // 汪汪汪~ 喵喵喵~
+
+```
+
