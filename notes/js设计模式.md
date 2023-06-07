@@ -248,7 +248,7 @@ adapter2.request(); // 适配类
 
 ##### 与观察者模式的区别
 
-![image-20230607141946742](C:\Users\mnn\AppData\Roaming\Typora\typora-user-images\image-20230607141946742.png)
+![](https://image.dahuangf.com/hornet_erp/3114cf0916f4ef533cc370c5e7bb099--1686122407981nv0lildqw3q.jpg)
 
 ##### 原理
 
