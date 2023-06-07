@@ -248,7 +248,7 @@ adapter2.request(); // 适配类
 
 ##### 与观察者模式的区别
 
-![](https://image.dahuangf.com/hornet_erp/3114cf0916f4ef533cc370c5e7bb099--1686122407981nv0lildqw3q.jpg)
+<img src="https://image.dahuangf.com/hornet_erp/3114cf0916f4ef533cc370c5e7bb099--1686122407981nv0lildqw3q.jpg" style="zoom:50%;" />
 
 ##### 原理
 
