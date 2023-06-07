@@ -16,10 +16,10 @@ class Dog extends Animals {
     return '汪汪汪~';
   }
 }
-
 // 工厂类
 class Productor {
-  createAnimal(name) {
+  // 静态方法
+  static createAnimal(name) {
     switch (name) {
       case 'dog':
         return new Dog();
@@ -31,8 +31,6 @@ class Productor {
   }
 }
 
-const animal = new Productor();
-
-const dog = animal.createAnimal('dog');
-const cat = animal.createAnimal('cat');
+const dog = Productor.createAnimal('dog');
+const cat = Productor.createAnimal('cat');
 console.log(dog.speak(), cat.speak()); // 汪汪汪~ 喵喵喵~

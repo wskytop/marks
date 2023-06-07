@@ -6,6 +6,12 @@
 
 - demo
 
+  > demo
+
+- designMode
+
+  > js设计模式
+
 - notes
 
   > 笔记
