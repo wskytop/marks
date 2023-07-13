@@ -259,4 +259,66 @@ vue3不必再配合async就可以直接在<script setup>中直接使用await，�
 
 
 
-解构赋值会失去响应式
+###### v-if显示错位问题
+
+若v-if切换的是逻辑复杂的控件时，切换时不重新渲染极易出问题
+需要给要重新渲染的控件添加一个key属性，来唯一标识该控件，被key标识后会重新渲染。实例如下
+
+```vue
+<template v-if="type=== 'username'" key="1"> 
+	<label>用户名</label> 
+	<input placeholder="输入用户名"> 
+</template> 
+<template v-else key="2"> 
+	<label>邮箱</label> 
+	<input placeholder="输入邮箱"> 
+</template>
+```
+
+###### vue3获取this
+
+而 Vue3 组合式 API 中没有 this，如果想要类似的用法，有两种，一是获取当前组件实例，二是获取全局实例
+
+```vue
+<script setup>
+import { getCurrentInstance } from 'vue'
+
+// proxy 就是当前组件实例，可以理解为组件级别的 this，没有全局的、路由、状态管理之类的
+const { proxy, appContext } = getCurrentInstance()
+
+// 这个 global 就是全局实例
+const global = appContext.config.globalProperties
+</script>
+```
+
+###### vue3全局注册
+
+Vue2 中我们要往全局上挂载东西通常就是如下，然后在所有组件里都可以通过 `this.xxx` 获取到了
+
+```vue
+Vue.prototype.xxx = xxx
+```
+
+而 Vue3 中不能这么写了，换成了一个能被所有组件访问到的全局对象，就是上面说的全局实例的那个对象，比如在 `main.js` 中做全局注册
+
+```javascript
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+const app = createApp(App)
+// 添加全局属性
+app.config.globalProperties.name = '33'
+```
+
+在其他组件中调用
+
+```vue
+<script setup>
+import { getCurrentInstance } from 'vue'
+const { appContext } = getCurrentInstance()
+
+const global = appContext.config.globalProperties
+console.log(global.name) // 沐华
+</script>
+```
+
