@@ -111,6 +111,19 @@
 </script>
 ```
 
+原理：
+
+```vue
+<!-- 父组件 -->
+<template>
+	<my-component v-model="msg"></my-component>
+	<!-- 等同于 -->
+	<my-component :modelValue="msg" @update:modelValue="msg = $event"></my-component>
+</template>
+```
+
+子组件的值改变了，通知父组件去修改改值
+
 ###### 封装子组件
 
 > useModel.js
