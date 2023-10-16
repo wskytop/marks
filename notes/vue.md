@@ -8,6 +8,16 @@
 
 
 
+##### 组件向外二次暴露插槽
+
+```
+<template v-for="item in config" v-slot:[item.prop]="props">
+	<slot :name="item.prop" v-bind="props"></slot>
+</template>
+```
+
+
+
 #### vue3
 
 ###### *defineProps*:
