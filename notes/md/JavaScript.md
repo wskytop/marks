@@ -76,7 +76,7 @@ console.log(toString.call(null)); //[object Null]
 
 ##### instanceof 和 typeof 的区别：
 
-typeof在对值类型number、string、boolean 、null 、 undefined、 以及引用类型的function的反应是精准的；但是，对于对象{ } 、数组[ ] 、null 都会返回object
+typeof在对值类型number、string、boolean、undefined 以及引用类型的function的反应是精准的；但是，对于对象{ } 、数组[ ] 、null 都会返回object
 
 为了弥补这一点，instanceof 从原型的角度，来判断某引用属于哪个构造函数，从而判定它的数据类型。
 
@@ -226,9 +226,14 @@ bind 主要就是将函数绑定到某个对象，bind()会创建一个函数，
 - 每个实例都有隐式原型 `__proto__`
 - 实例的 `__proto__` 指向对应 class 的 prototype
 
-‌ **原型:**  在 JS 中，每当定义一个对象（函数也是对象）时，对象中都会包含一些预定义的属性。其中每个`函数对象`都有一个`prototype` 属性，这个属性指向函数的`原型对象`。
+‌ **原型:**  有对象的地方就有原型，每个对象都会在其内部初始化一个属性，就是prototype(原型)，原型中存储共享的属性和方法。当我们访问一个对象的属性时，js引擎会先看当前对象中是否有这个属性，如果没有的就会查找他的prototype对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象。这么一个寻找的过程就形成了 原型链 的概念。
 
-原型链：函数的原型链对象constructor默认指向函数本身，原型对象除了有原型属性外，为了实现继承，还有一个原型链指针__proto__,该指针是指向上一层的原型对象，而上一层的原型对象的结构依然类似。因此可以利用__proto__一直指向Object的原型对象上，而Object原型对象用Object.prototype.__ proto__ = null表示原型链顶端。如此形成了js的原型链继承。同时所有的js对象都有Object的基本防范
+- `__proto__`属性在所有对象中都存在，指向其构造函数的prototype对象；prototype对象只存在（构造）函数中，用于存储共享属性和方法；constructor属性只存在于（构造）函数的prototype中，指向（构造）函数本身。
+- 一个对象或者构造函数中的隐式原型`__proto__`的属性值指向其构造函数的显式原型 prototype 属性值，关系表示为：instance.`__proto__ `=== instance.constructor.prototype
+- 除了 Object，所有对象或构造函数的 prototype 均继承自 Object.prototype，原型链的顶层指向 null：Object.prototype.`__proto__` === null
+- Object.prototype 中也有 constructor：Object.prototype.constructor === Object
+- 构造函数创建的对象（Object、Function、Array、普通对象等）都是 Function 的实例，它们的 `__proto__` 均指向 Function.prototype。
+
 
 **特点:**  `JavaScript`对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。
 
