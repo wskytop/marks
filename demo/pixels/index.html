@@ -9,70 +9,72 @@
   <body>
     <div class="wrap">
       <div class="left">
-        <h2>像素化</h2>
-        <div class="flex aic mgt10">
-          <div class="upload">
-            <input
-              type="file"
-              name="file"
-              id="file"
-              class="upload-input"
-              onchange="changePic(this)"
-            />
-            <label for="file" class="upload-btn button">+上传图片</label>
+        <div>
+          <h2>像素化</h2>
+          <div class="flex aic mgt10">
+            <div class="upload">
+              <input
+                type="file"
+                name="file"
+                id="file"
+                class="upload-input"
+                onchange="changePic(this)"
+              />
+              <label for="file" class="upload-btn button">+上传图片</label>
+            </div>
           </div>
-        </div>
-        <div id="showImg" class="showImg mgt10">未上传</div>
-        <div class="mgt10">
-          阈值（0～255）：
-          <span id="threshold">128</span>
-        </div>
-        <div class="flex mgt10 aic">
-          <button id="subtract" class="btn-small" onclick="onSubtract(this)">
-            -
-          </button>
-          <input
-            type="range"
-            min="0"
-            max="255"
-            name=""
-            id="range"
-            value="128"
-            onchange="onChangeRange(this)"
-          />
-          <button id="add" class="btn-small" onclick="onAdd(this)">+</button>
-        </div>
-        <div class="mgt10">
-          缩放值 (像素大小）：
-          <span id="scaleVal">0.25</span>
-        </div>
-        <div class="flex mgt10 aic">
-          <button
-            id="subtract"
-            class="btn-small"
-            onclick="onSubtractScale(this)"
+          <div id="showImg" class="showImg mgt10">未上传</div>
+          <div class="mgt10">
+            阈值（0～255）：
+            <span id="threshold">128</span>
+          </div>
+          <div class="flex mgt10 aic">
+            <button id="subtract" class="btn-small" onclick="onSubtract(this)">
+              -
+            </button>
+            <input
+              type="range"
+              min="0"
+              max="255"
+              name=""
+              id="range"
+              value="128"
+              onchange="onChangeRange(this)"
+            />
+            <button id="add" class="btn-small" onclick="onAdd(this)">+</button>
+          </div>
+          <div class="mgt10">
+            缩放值 (像素大小）：
+            <span id="scaleVal">0.25</span>
+          </div>
+          <div class="flex mgt10 aic">
+            <button
+              id="subtract"
+              class="btn-small"
+              onclick="onSubtractScale(this)"
+            >
+              -
+            </button>
+            <input
+              type="range"
+              min="0.01"
+              max="1"
+              name=""
+              step="0.01"
+              id="rangeScale"
+              value="0.25"
+              onchange="onChangeRangeScale(this)"
+            />
+            <button id="add" class="btn-small" onclick="onAddScale(this)">
+              +
+            </button>
+          </div>
+          <a href="#" id="download" class="button mgt10" onclick="onDown(this)"
+            >下载图片</a
           >
-            -
-          </button>
-          <input
-            type="range"
-            min="0.01"
-            max="1"
-            name=""
-            step="0.01"
-            id="rangeScale"
-            value="0.25"
-            onchange="onChangeRangeScale(this)"
-          />
-          <button id="add" class="btn-small" onclick="onAddScale(this)">
-            +
-          </button>
-        </div>
-        <a href="#" id="download" class="button mgt10" onclick="onDown(this)"
-          >下载图片</a
-        >
-        <div class="check" id="color-check" onclick="onChangeModel(this)">
-          彩色
+          <div class="check" id="color-check" onclick="onChangeModel(this)">
+            彩色
+          </div>
         </div>
       </div>
       <div class="right">
