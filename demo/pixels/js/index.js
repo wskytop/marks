@@ -34,7 +34,6 @@ const onAdd = (e) => {
   render();
 };
 const onAddScale = () => {
-  console.log(rangeScale.value, '99');
   rangeScale.value = Number(rangeScale.value) + 0.01;
   scaleVal.innerHTML = rangeScale.value;
   scale = rangeScale.value;
@@ -43,6 +42,12 @@ const onAddScale = () => {
 const onChangeRange = (e) => {
   threshold.innerHTML = e.value;
   currentThreshold = range.value;
+  render();
+};
+const onChangeRangeScale = (e) => {
+  rangeScale.value = e.value;
+  scaleVal.innerHTML = rangeScale.value;
+  scale = rangeScale.value;
   render();
 };
 const onChangeModel = () => {
