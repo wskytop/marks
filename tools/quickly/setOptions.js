@@ -1,4 +1,5 @@
-function getTableData(list, str) {
+const onWrite = require('./tools/write.cjs');
+function onSetOptions(list, str) {
   let obj = {};
   let clo = '{';
   list.map((item, index, arr) => {
@@ -13,7 +14,7 @@ function getTableData(list, str) {
   return [clo, obj];
 }
 
-let list1 = [
+const list1 = [
   '1已申请',
   '2待执行',
   '3部分执行',
@@ -22,9 +23,9 @@ let list1 = [
   '8已关闭',
   '100已取消',
 ];
-let [tableClo, tableObj] = getTableData(
+const [columns, language] = onSetOptions(
   list1,
   'asset.wms.temporarySave.tempStatus'
 );
-console.log(tableObj);
-console.log(tableClo);
+console.log(columns);
+onWrite({ language });
