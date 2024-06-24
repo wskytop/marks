@@ -24,7 +24,7 @@ const fromConfig = {
   9: 'mapInput',
 };
 
-// 表单
+// 表单列
 function onSetFormColumns(list, str) {
   let language = {};
   const arr = list.map((item, index) => {
@@ -142,7 +142,7 @@ const tableData = {
     columns: [],
   },
 };
-// 表格
+// 表格列
 function onSetTableColumns(list, str) {
   let obj = {};
   let clo = [];
@@ -155,9 +155,21 @@ function onSetTableColumns(list, str) {
   });
   return [clo, obj];
 }
+function onSetTable(table, form, name) {
+  const [c, l] = onSetTableColumns(table, name + 'table');
+  const [c2, l2] = onSetFormColumns(form, name + 'from');
+  tableData.filterForm.fields = c2;
+  tableData.table.columns = c;
+  return {
+    tableData,
+    language: { ...l, ...l2 },
+  };
+}
+
 module.exports = {
   onSetBlockColumns,
   onSetFormColumns,
   onSetOptions,
   onSetTableColumns,
+  onSetTable,
 };

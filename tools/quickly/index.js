@@ -4,6 +4,7 @@ const {
   onSetFormColumns, // 表单列配置
   onSetOptions, // 筛选项
   onSetTableColumns, // 表格列配置
+  onSetTable, // 表哥配置项
 } = require('./tools/setColumns.cjs');
 
 let columns = [];
@@ -66,5 +67,8 @@ const tableColumns = [
   tableColumns,
   'asset.wms.stockDetail.table.columns'
 );
+
+// const tableData = onSetTable(tableColumns, formColumns, 'wms.storage.');
+// onWrite(tableData);
 
 onWrite({ columns, language });
