@@ -1,11 +1,1 @@
-const res = {
-  language: {
-    'asset.wms.temporarySave.tempStatus1': '已申请',
-    'asset.wms.temporarySave.tempStatus2': '待执行',
-    'asset.wms.temporarySave.tempStatus3': '部分执行',
-    'asset.wms.temporarySave.tempStatus4': '暂存中',
-    'asset.wms.temporarySave.tempStatus5': '已结束',
-    'asset.wms.temporarySave.tempStatus8': '已关闭',
-    'asset.wms.temporarySave.tempStatus100': '已取消',
-  },
-};
+const res ={"columns":"{\n1: 'asset.wms.temporarySave.tempStatus0', // 已申请\n2: 'asset.wms.temporarySave.tempStatus1', // 待执行\n3: 'asset.wms.temporarySave.tempStatus2', // 部分执行\n4: 'asset.wms.temporarySave.tempStatus3', // 暂存中\n5: 'asset.wms.temporarySave.tempStatus4', // 已结束\n8: 'asset.wms.temporarySave.tempStatus5', // 已关闭\n }","language":{"asset.wms.temporarySave.tempStatus1":"已申请","asset.wms.temporarySave.tempStatus2":"待执行","asset.wms.temporarySave.tempStatus3":"部分执行","asset.wms.temporarySave.tempStatus4":"暂存中","asset.wms.temporarySave.tempStatus5":"已结束","asset.wms.temporarySave.tempStatus8":"已关闭"}}

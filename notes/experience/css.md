@@ -29,3 +29,19 @@ vertical-align: -0.1em;
 
 
 
+sass 混入样式
+
+```scss
+<style lang="scss">
+  // 定义需要混入的样式
+	@mixin flexCenter {
+		display: flex;
+		align-items: center;
+	}
+	.top{
+    	// 引入
+			@include flexCenter;
+	}
+	</style>
+```
+
