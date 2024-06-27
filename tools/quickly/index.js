@@ -28,6 +28,8 @@ const formColumns = [
   '1设备编码',
   '1设备自编码',
 ];
+// [(columns, language)] = onSetFormColumns(formColumns,'asset.wms.stockDetail.table.columns');
+
 // 块级表格列配置
 const blockColumns = [
   '审批状态',
@@ -37,6 +39,8 @@ const blockColumns = [
   '调出门店',
   '设备来源',
 ];
+// [columns, language] = onSetBlockColumns(blockColumns, 'asset.wms.allot.basic');
+
 // 筛选项
 const optionsColumns = [
   '1已申请',
@@ -46,6 +50,12 @@ const optionsColumns = [
   '5已结束',
   '8已关闭',
 ];
+// [columns, language] = onSetOptions(
+//   optionsColumns,
+//   'asset.wms.temporarySave.tempStatus'
+// );
+// console.log(columns);
+
 // 表格列配置
 const tableColumns = [
   '单据号',
@@ -55,19 +65,12 @@ const tableColumns = [
   '设备编码',
   '设备自编码',
 ];
-
-// [columns, language] = onSetBlockColumns(blockColumns, 'asset.wms.allot.basic');
-// [(columns, language)] = onSetFormColumns(formColumns,'asset.wms.stockDetail.table.columns');
-// [columns, language] = onSetOptions(
-//   optionsColumns,
-//   'asset.wms.temporarySave.tempStatus'
-// );
-// console.log(columns);
 [columns, language] = onSetTableColumns(
   tableColumns,
   'asset.wms.stockDetail.table.columns'
 );
 
+// 表格+表格筛选
 // const tableData = onSetTable(tableColumns, formColumns, 'wms.storage.');
 // onWrite(tableData);
 
