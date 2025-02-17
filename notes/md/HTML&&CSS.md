@@ -40,7 +40,7 @@ cover_picture:
 
 ### rem 和 em 的区别
 
-> rem是根据根的font-size变化，而em是根据父级的font-size变化
+> rem是根据根元素的font-size变化，而em是根据父级的font-size变化
 
 rem：相对于根元素html的font-size，假如html为font-size：12px，那么，在其当中的div设置为font-size：2rem,就是当中的div为24px
 
@@ -80,7 +80,7 @@ em：相对于父元素计算，假如某个p元素为font-size:12px,在它内�
 -   关系选择器/通配符选择器（0000）
 
 带!important 标记的样式属性优先级最高； 样式表的来源相同时：
-`!important > 行内样式>ID选择器 > 类选择器 > 标签 > 通配符 > 继承 > 浏览器默认属性`
+`!important > 行内样式>ID选择器 > 类选择器/伪类/属性选择器 > 标签 > 通配符 > 继承 > 浏览器默认属性`
 
 
 ### 渐进增强与优雅降级的理解及区别
@@ -122,7 +122,7 @@ em：相对于父元素计算，假如某个p元素为font-size:12px,在它内�
 
 3. 设置较小高度标签（一般小于10px），在IE6，IE7中高度超出自己设置高度。hack：给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。
 
-4. Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
+4. Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,可通过加入 CSS 属性<font color=RED> -webkit-text-size-adjust: none;</font> 解决。
 
 5. 超链接访问过后hover样式就不出现了，被点击访问过的超链接样式不再具有hover和active了。解决方法是改变CSS属性的排列顺序:L-V-H-A ( love hate ): a:link {} a:visited {} a:hover {} a:active {}
 
@@ -323,12 +323,33 @@ Flex 是 Flexible Box 的缩写，意为"弹性布局",用来为盒状模型提�
 
 首先 Rem 相对于根(html)的 font-size 大小来计算。简单的说它就是一个相对单例 如:font-size:10px;,那么（1rem = 10px）了解计算原理后首先解决怎么在不同设备上设置 html 的 font-size 大小。其实 rem 布局的本质是等比缩放，一般是基于宽度。
 
+```js
+// 设计稿宽度（通常为 750px，根据实际设计稿调整）
+const designWidth = 750;
+// 设计稿根元素字体大小（通常为 100px，方便计算）
+const designFontSize = 100;
+
+// 设置根元素字体大小
+function setRootFontSize() {
+  const clientWidth = document.documentElement.clientWidth || window.innerWidth;
+  const fontSize = (clientWidth / designWidth) * designFontSize;
+  document.documentElement.style.fontSize = fontSize + "px";
+}
+
+// 初始化
+setRootFontSize();
+
+// 监听窗口大小变化
+window.addEventListener("resize", setRootFontSize);
+window.addEventListener("orientationchange", setRootFontSize); // 处理横竖屏切换
+```
+
 **优点**：可以快速适用移动端布局，字体，图片高度
 
 **缺点**：
 
-①目前 ie 不支持，对 pc 页面来讲使用次数不多；\
-②数据量大：所有的图片，盒子都需要我们去给一个准确的值；才能保证不同机型的适配；\
+①目前 ie 不支持，对 pc 页面来讲使用次数不多；
+②数据量大：所有的图片，盒子都需要我们去给一个准确的值；才能保证不同机型的适配；
 ③在响应式布局中，必须通过 js 来动态控制根元素 font-size 的大小。也就是说 css 样式和 js 代码有一定的耦合性。且必须将改变 font-size 的代码放在 css 样式之前。
 
 #### 3.百分比布局

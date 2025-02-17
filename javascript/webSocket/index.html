@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket 实时数据同步</title>
+  </head>
+  <body>
+    <h1>WebSocket 实时数据同步</h1>
+    <input type="text" id="messageInput" placeholder="输入消息" />
+    <button onclick="sendMessage()">发送</button>
+    <ul id="messages"></ul>
+
+    <script>
+      // 1. 连接 WebSocket 服务器
+      const ws = new WebSocket('ws://localhost:8080');
+
+      // 2. 监听连接成功
+      ws.onopen = () => {
+        console.log('已连接到服务器');
+      };
+
+      // 3. 监听服务器消息
+      ws.onmessage = (event) => {
+        const messages = document.getElementById('messages');
+        const li = document.createElement('li');
+        li.textContent = event.data;
+        messages.appendChild(li);
+      };
+
+      // 4. 监听连接关闭
+      ws.onclose = () => {
+        console.log('连接已关闭');
+      };
+
+      // 5. 发送消息
+      function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const message = input.value;
+        if (!message) return;
+        ws.send(message); // 发送消息到服务器
+        input.value = '';
+      }
+    </script>
+  </body>
+</html>
