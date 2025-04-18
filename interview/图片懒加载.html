@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .top {
+        height: 800px;
+      }
+      .img {
+        height: 100px;
+        width: 100px;
+        display: block;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">top</div>
+    <img
+      data-src="https://image.dahuangf.com/hornet_erp/1663570119014.jpg"
+      src=""
+      class="img"
+    />
+    <img
+      data-src="https://image.dahuangf.com/hornet_erp/1663570119014.jpg"
+      src=""
+      class="img"
+    />
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const imgs = document.querySelectorAll('.img');
+        const inters = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              observer.unobserve(img);
+            }
+          });
+        });
+        imgs.forEach((img) => {
+          inters.observe(img);
+        });
+      });
+    </script>
+  </body>
+</html>
